@@ -1,13 +1,12 @@
 import mongoose from "mongoose";
-mongoose.Schema("Client", {
+const ClientSchema = mongoose.Schema({
   client_id: {
     type: String,
     required: true,
   },
   order: {
     type: String,
-    required: true,
   },
 });
 
-export default mongoose.model("Client");
+export const Client = mongoose.model("Client", ClientSchema);

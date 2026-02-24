@@ -1,6 +1,6 @@
-import Admin from "../models/admin.model.js";
+import { Admin } from "../models/admin.model.js";
 
-export async function credit(req, res) {
+export const credit = async (req, res) => {
   const { client_id, amount } = req.body;
 
   try {
@@ -14,9 +14,9 @@ export async function credit(req, res) {
   } catch (error) {
     res.status(500).json({ error: "Internal server error" });
   }
-}
+};
 
-export async function debit(req, res) {
+export const debit = async (req, res) => {
   const { client_id, amount } = req.body;
 
   try {
@@ -33,6 +33,4 @@ export async function debit(req, res) {
   } catch (error) {
     res.status(500).json({ error: "Internal server error" });
   }
-}
-
-export default { credit, debit };
+};

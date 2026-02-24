@@ -1,6 +1,5 @@
 import express from "express";
-import credit from "../controllers/admin.controller.js";
-import debit from "../controllers/admin.controller.js";
+import { credit, debit } from "../controllers/admin.controller.js";
 
 const router = express.Router();
 

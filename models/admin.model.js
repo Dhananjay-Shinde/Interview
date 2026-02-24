@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-mongoose.Schema("Admin", {
+const AdminSchema = mongoose.Schema({
   client_id: {
     type: String,
     required: true,
@@ -10,4 +10,4 @@ mongoose.Schema("Admin", {
   },
 });
 
-export default mongoose.model("Admin");
+export const Admin = mongoose.model("Admin", AdminSchema);

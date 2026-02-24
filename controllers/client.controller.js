@@ -1,6 +1,6 @@
-import Client from "../models/client.model.js";
+import { Client } from "../models/client.model.js";
 
-export async function createOrder(req, res) {
+export const createOrder = async (req, res) => {
   const { client_id, order } = req.body;
 
   try {
@@ -10,22 +10,22 @@ export async function createOrder(req, res) {
   } catch (error) {
     res.status(500).json({ error: "Internal server error" });
   }
-}
+};
 
-export async function getOrderById(req, res) {
+export const getOrderById = async (req, res) => {
   const { id } = req.params;
   try {
-    const order = await Client.findById(id);
-    if (!order) {
-      return res.status(404).json({ error: "Order not found" });
+    const client = await Client.findOne({ client_id: id });
+    if (!client.order) {
+      return res.status(404).json({ error: "Client not found" });
     }
-    return res.json(order);
+    return res.json(client);
   } catch (error) {
     res.status(500).json({ error: "Internal server error" });
   }
-}
+};
 
-export async function getBalance(req, res) {
+export const getBalance = async (req, res) => {
   const { client_id } = req.query;
   try {
     const client = await Client.findOne({ client_id }).select("amount");
@@ -33,4 +33,4 @@ export async function getBalance(req, res) {
   } catch (error) {
     res.status(500).json({ error: "Internal server error" });
   }
-}
+};
