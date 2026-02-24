@@ -9,8 +9,7 @@ const app = express();
 
 const router = express.Router();
 
-router.post("/orders", createOrder);
-router.get(`/orders/:id`, getOrderById);
-router.get("/wallet/balance", getBalance);
-
+router.route("/orders").post(createOrder);
+router.route(`/orders/:id`).get(getOrderById);
+router.route("/wallet/balance").get(getBalance);
 export default router;

@@ -1,10 +1,10 @@
 import express from "express";
-import credit from "../controllers/admin.controller";
-import debit from "../controllers/admin.controller";
+import credit from "../controllers/admin.controller.js";
+import debit from "../controllers/admin.controller.js";
 
 const router = express.Router();
 
-router.post("/credit", credit);
-router.post("/debit", debit);
+router.route("/credit").post(credit);
+router.route("/debit").post(debit);
 
 export default router;

@@ -27,10 +27,12 @@ export async function debit(req, res) {
     if (admin.amount < amount) {
       return res.status(400).json({ error: "Insufficient balance" });
     }
-    admin.amount = admin.Admin - amount;
+    admin.amount = admin.amount - amount;
     await admin.save();
     res.json({ message: "Debit processed successfully", admin });
   } catch (error) {
     res.status(500).json({ error: "Internal server error" });
   }
 }
+
+export default { credit, debit };

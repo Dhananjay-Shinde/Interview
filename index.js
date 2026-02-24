@@ -17,10 +17,10 @@ app.use(
   }),
 );
 
+app.use("/admin/wallet", userRouter);
+app.use("/client", clientRouter);
+
 app.listen(port, () => {
   DB();
   console.log(`Server is running on http://localhost:${port}`);
 });
-
-app.use("/admin/wallet", userRouter);
-app.use("/client", clientRouter);
